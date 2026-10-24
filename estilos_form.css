@@ -1,0 +1,220 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 15px;
+  background-color:beige;
+  color: #333333;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('Fuentes/Poppins/Poppins-Bold.ttf') format('truetype');
+  font-weight: 900;
+  font-size: 3rem;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('Fuentes/Inter/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Monserrat';
+  src: url('Fuentes/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('Fuentes/Oswald/Oswald-VariableFont_wght.ttf') format('truetype');
+  font-weight: 1000;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SpaceGrotesk';
+  src: url('Fuentes/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+h1 {
+  text-align: center;
+  color: #1e293b;
+  font-family: 'Poppins', sans-serif;
+
+  text-decoration: underline;
+  text-decoration-color:black;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
+}
+
+h1 {
+  text-align: center;
+  color: black;
+}
+
+.caja {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #52796F;
+  font-family: 'Monserrat', sans-serif;
+}
+
+.filas-rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
+}
+
+.elementos-formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 0.90rem;
+  font-family: 'SpaceGrotesk';
+}
+
+input, select, button {
+  background-color: #f8fafc;
+  padding: 10px 12px;
+  margin-top: 4px;
+  box-sizing: border-box;
+  border: 1px solid #cbd5e1;
+  border-radius: 4%;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.caja select:focus,
+.caja input:focus {
+  background-color: #ffffff;
+  border-color: #e5d9b6;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.campo-bloqueado {
+  background-color: #f1f5f9;
+  color: #64748b;
+  cursor: not-allowed;
+}
+
+button[type="submit"] {
+  background-color: #0B0B45;
+  color: white;
+  border: none;
+  margin-top: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 10px;
+  font-family: 'Inter';
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #76b2da;
+  transform: translateY(-1px);
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+.btn-borrar {
+  background-color: #dc2626;
+  margin-top: 0;
+  padding: 5px 10px;
+  width: auto;
+  font-family: 'Oswald';
+  font-weight: 500;
+}
+
+.btn-borrar:hover {
+  background-color: #b91c1c;
+}
+
+.btn-borrar-todo {
+  background-color: #A30000;
+  color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+
+
+  font-family: 'Oswald';
+  font-size: 0.90rem;
+  font-weight: 500;
+  
+  text-transform: uppercase; 
+  letter-spacing: 1px;     
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.3); 
+  transition: all 0.2s ease;
+}
+
+.btn-borrar-todo:hover {
+  background-color: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(185, 28, 28, 0.4);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  border: 1px solid #cbd5e1;
+  padding: 8px;
+  text-align: left;
+  font-size: 0.85rem;
+  font-family: 'Inter';
+}
+
+th {
+  background-color: #f1f5f9;
+}
+
+.estado {
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
+.operativo {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.mantenimiento {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.inoperativo {
+  background-color: #fee2e2;
+  color: #991b1b;
+}

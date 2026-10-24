@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inventario de Laboratorios</title>
+  <link rel="stylesheet" href="estilos_form.css">
+</head>
+<body>
+
+  <h1>Sistema de Gestión de Equipos de los Laboratorios</h1>
+
+  <!-- 1. Configuración de Componentes por Laboratorio -->
+  <section class="caja">
+    <h2>1. Establecer componentes del Laboratorio</h2>
+    <form onsubmit="guardarComponentes(event)">
+      
+      <div class="elementos-formulario">
+        <label for="lab-config">Laboratorio:</label>
+        <select id="lab-config">
+          <option value="lab1">Laboratorio 1</option>
+          <option value="lab2">Laboratorio 2</option>
+          <option value="lab3">Laboratorio 3</option>
+          <option value="lab4">Laboratorio 4</option>
+        </select>
+      </div>
+
+      <div class="filas-rejilla">
+        <!-- Marca de CPU -->
+        <div class="elementos-formulario">
+          <label for="marca-cpu">Marca del CPU (Torre):</label>
+          <select id="marca-cpu">
+            <option value="Q-one">Q-one</option>
+            <option value="HP">HP</option>
+            <option value="Ins">Ins</option>
+            <option value="Lenovo">Lenovo</option>
+            <option value="Dell">Dell</option>
+            <option value="ASUS">ASUS</option>
+          </select>
+        </div>
+
+        <!-- Procesador -->
+        <div class="elementos-formulario">
+          <label for="procesador">Procesador:</label>
+          <select id="procesador">
+            <option value="Core i3">Intel Core i3</option>
+            <option value="Core i5">Intel Core i5</option>
+            <option value="Core i7">Intel Core i7</option>
+          </select>
+        </div>
+
+        <!-- Memoria RAM y Almacenamiento -->
+        <div class="elementos-formulario">
+          <label for="ram">Memoria RAM:</label>
+          <select id="ram">
+            <option value="2 GB">2 GB</option>
+            <option value="4 GB">4 GB</option>
+            <option value="8 GB">8 GB</option>
+            <option value="16 GB">16 GB</option>
+          </select>
+        </div>
+
+        <div class="elementos-formulario">
+          <label for="tipo-almacenamiento">Tipo de Almacenamiento:</label>
+          <select id="tipo-almacenamiento">
+            <option value="SSD">SSD (Disco Sólido)</option>
+            <option value="HDD">HDD (Disco Duro)</option>
+          </select>
+        </div>
+
+        <div class="elementos-formulario">
+          <label for="capacidad-almacenamiento">Capacidad de Almacenamiento:</label>
+          <select id="capacidad-almacenamiento">
+            <option value="120 GB">120 GB</option>
+            <option value="300 GB">300 GB</option>
+            <option value="512 GB">512 GB</option>
+            <option value="1 TB">1 TB</option>
+          </select>
+        </div>
+
+        <!-- Tarjeta Gráfica Predeterminada -->
+        <div class="elementos-formulario">
+          <label for="gpu">Tarjeta Gráfica:</label>
+          <input type="text" id="gpu" value="Intel UHD integradas (hasta 128 MB VRAM)" readonly class="campo-bloqueado">
+        </div>
+
+        <!-- Monitor (Marca y Selección Dinámica de Modelo) -->
+        <div class="elementos-formulario">
+          <label for="marca-monitor">Marca del Monitor:</label>
+          <select id="marca-monitor">
+            <option value="HP">HP</option>
+            <option value="Samsung">Samsung</option>
+            <option value="LG">LG</option>
+            <option value="Acer">Acer</option>
+            <option value="Dell">Dell</option>
+            <option value="ASUS">ASUS</option>
+          </select>
+        </div>
+
+        <div class="elementos-formulario">
+          <label for="modelo-monitor">Modelo del Monitor:</label>
+          <select id="modelo-monitor">
+            <!-- JavaScript llenará esta lista automáticamente -->
+          </select>
+        </div>
+      </div>
+
+      <button type="submit">Guardar Componentes del Laboratorio</button>
+    </form>
+  </section>
+
+  <!-- 2. Registro de Equipos (PCs) -->
+  <section class="caja">
+    <h2>2. Registrar Equipo (PC)</h2>
+    <form onsubmit="registrarPC(event)">
+      
+      <div class="filas-rejilla">
+        <div class="elementos-formulario">
+          <label for="lab-pc">Laboratorio:</label>
+          <select id="lab-pc">
+            <option value="lab1">Laboratorio 1</option>
+            <option value="lab2">Laboratorio 2</option>
+            <option value="lab3">Laboratorio 3</option>
+            <option value="lab4">Laboratorio 4</option>
+          </select>
+        </div>
+
+        <div class="elementos-formulario">
+          <label for="numero-pc">Número de PC:</label>
+          <input type="number" id="numero-pc" min="1" max="999" placeholder="Ej: 5 (Genera GOE-PC-005)" required>
+        </div>
+
+        <div class="elementos-formulario">
+          <label for="estado">Estado del Equipo:</label>
+          <select id="estado">
+            <option value="Operativo">Operativo</option>
+            <option value="Mantenimiento">En Mantenimiento</option>
+            <option value="Inoperativo">Inoperativo</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit">Registrar PC</button>
+    </form>
+  </section>
+
+  <!-- 3. Tabla de Inventario de PCs -->
+  <section class="caja">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h2>3. Equipos Registrados</h2>
+      <button type="button" class="btn-borrar-todo" onclick="reiniciarInventario()">
+        🗑️ Reiniciar Todo el Inventario
+      </button>
+    </div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Código Único</th>
+          <th>Laboratorio</th>
+          <th>N° PC</th>
+          <th>Usuario</th>
+          <th>Hardware Base</th>
+          <th>Monitor</th>
+          <th>Estado</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-body">
+        <!-- Las filas registradas se dibujan aquí mediante script.js -->
+      </tbody>
+    </table>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
